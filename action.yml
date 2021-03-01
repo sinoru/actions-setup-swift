@@ -7,9 +7,21 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install swiftenv
+    - name: Install Essentials
       shell: bash
       run: |
+        echo "::group::Install Essentials"
+        
+        case "${{ runner.os }}" in
+          "Linux") apt-get install build-essential binutils gnupg2 libcurl4 libedit2 libpython2.7 libsqlite3-0 libxml2 libz3-dev tzdata zlib1g-dev;;
+        esac
+
+        echo "::endgroup::"
+    - name: Install swiftlint
+      shell: bash
+      run: |
+        echo "::group::Install swiftlint"
+        
         export SWIFTENV_ROOT="${{ github.action_path }}/swiftenv"
         export PATH="$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims:$PATH"
 
@@ -17,6 +29,13 @@ runs:
 
         echo "SWIFTENV_ROOT=$SWIFTENV_ROOT" >> $GITHUB_ENV
         echo "$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims" >> $GITHUB_PATH
+
+        echo "::endgroup::"
     - name: Install swift
       shell: bash
-      run: swiftenv install -s ${{ inputs.swift-version }}
+      run: |
+        echo "::group::Install swift"
+        
+        swiftenv install -s ${{ inputs.swift-version }}
+
+        echo "::endgroup::"
