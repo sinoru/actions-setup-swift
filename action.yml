@@ -1,11 +1,11 @@
-name: 'Setup Swift'
+name: 'Setup Swift (swiftenv)'
 description: 'Set up a specific version of swift using swiftenv'
 inputs:
   swift-version:
     description: 'Exact version of a Swift version to use.'
     required: true
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Install Essentials
       shell: bash
