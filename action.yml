@@ -36,6 +36,6 @@ runs:
       run: |
         echo "::group::Install swift"
         
-        swiftenv install -s ${{ inputs.swift-version }}
+        swiftenv install -s --verify ${{ inputs.swift-version }}
 
         echo "::endgroup::"
