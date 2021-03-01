@@ -3,7 +3,7 @@ description: 'Set up a specific version of swift using swiftenv'
 inputs:
   swift-version:
     description: 'Exact version of a Swift version to use.'
-    required: false
+    required: true
 outputs:
   random-number:
     description: "Random number"
@@ -22,6 +22,5 @@ runs:
         echo "SWIFTENV_ROOT=$SWIFTENV_ROOT" >> $GITHUB_ENV
         echo "$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims" >> $GITHUB_PATH
     - name: Install swift
-      if: ${{ inputs.swift-version != '' }}
       shell: bash
-      run: swiftenv install -s
+      run: swiftenv install -s ${{ inputs.swift-version }}
