@@ -4,10 +4,6 @@ inputs:
   swift-version:
     description: 'Exact version of a Swift version to use.'
     required: true
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }}
 runs:
   using: "composite"
   steps:
