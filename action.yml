@@ -14,10 +14,10 @@ runs:
     - name: Install swiftenv
       shell: bash
       run: |
-        export SWIFTENV_ROOT="$HOME/.swiftenv"
+        export SWIFTENV_ROOT="${{ github.action_path }}/swiftenv"
         export PATH="$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims:$PATH"
 
-        git clone --depth 1 https://github.com/kylef/swiftenv.git ${{ github.action_path }}/swiftenv
+        git clone --depth 1 https://github.com/kylef/swiftenv.git $SWIFTENV_ROOT
 
         echo "SWIFTENV_ROOT=$SWIFTENV_ROOT" >> $GITHUB_ENV
         echo "$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims" >> $GITHUB_PATH
