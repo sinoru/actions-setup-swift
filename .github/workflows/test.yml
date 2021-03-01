@@ -1,0 +1,22 @@
+name: Test
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    name: Test
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [macos-latest]
+        swift-version: ["5.3.0"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: actions-setup-swift
+        uses: ./
+        with:
+          swift-version: ${{ matrix.swift-version }}
+      - name: Swift Version
+        run: swift -v
