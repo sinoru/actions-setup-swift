@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [macos-latest]
+        operating-system: ["ubuntu-18.04", "ubuntu-20.04", "macos-10.15"]
         swift-version: ["5.3.0"]
     steps:
       - name: Checkout
