@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         operating-system: ["ubuntu-18.04", "ubuntu-20.04", "macos-10.15"]
-        swift-version: ["5.3.0"]
+        swift-version: ["5.3"]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
