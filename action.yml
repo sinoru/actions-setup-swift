@@ -13,7 +13,7 @@ runs:
         echo "::group::Install Essentials"
         
         case "${{ runner.os }}" in
-          "Linux") apt-get install build-essential binutils gnupg2 libcurl4 libedit2 libpython2.7 libsqlite3-0 libxml2 libz3-dev tzdata zlib1g-dev;;
+          "Linux") sudo apt-get install build-essential binutils gnupg2 libcurl4 libedit2 libpython2.7 libsqlite3-0 libxml2 libz3-dev tzdata zlib1g-dev;;
         esac
 
         echo "::endgroup::"
