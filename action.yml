@@ -1,5 +1,8 @@
 name: 'Setup Swift (swiftenv)'
 description: 'Set up a specific version of swift using swiftenv'
+branding:
+  icon: 'feather'
+  color: 'orange'
 inputs:
   swift-version:
     description: 'Exact version of a Swift version to use.'
