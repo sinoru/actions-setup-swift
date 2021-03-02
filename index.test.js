@@ -19,4 +19,4 @@ test('test runs', async () => {
     console.error(error);
     throw error;
   }
-}, 100000);
+}, 1000000);
