@@ -1,7 +1,7 @@
 {
   "name": "actions-setup-swift",
   "version": "2.0.1",
-  "description": "Set up a specific version of swift using swiftenv",
+  "description": "Setup a Swift environment and optionally downloading and adding it to the PATH",
   "main": "index.mjs",
   "scripts": {
     "lint": "eslint .",

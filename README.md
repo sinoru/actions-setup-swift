@@ -3,10 +3,9 @@
 [![Unit Tests](https://github.com/sinoru/actions-setup-swift/actions/workflows/units.yml/badge.svg)](https://github.com/sinoru/actions-setup-swift/actions/workflows/test.yml)
 [![Tests](https://github.com/sinoru/actions-setup-swift/actions/workflows/tests.yml/badge.svg)](https://github.com/sinoru/actions-setup-swift/actions/workflows/test.yml)
 
-This action sets up a swift environment using [swiftenv](https://github.com/kylef/swiftenv) for use in actions by:
+This action sets up a swift environment for use in actions by:
 
-- optionally downloading a version of swift from swift.org.
-- supports macOS, Linux runner.
+- optionally downloading a version of swift from swift.org using [swiftenv](https://github.com/kylef/swiftenv).
 
 # Usage
 

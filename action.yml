@@ -1,5 +1,5 @@
-name: 'Setup Swift (swiftenv)'
-description: 'Set up a specific version of swift using swiftenv'
+name: 'Setup Swift environment'
+description: 'Setup a Swift environment and optionally downloading and adding it to the PATH'
 branding:
   icon: 'feather'
   color: 'orange'
