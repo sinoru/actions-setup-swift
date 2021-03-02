@@ -1,7 +1,7 @@
 import core from '@actions/core';
 import exec from '@actions/exec';
 
-export async function install(options = {}) {
+async function install(options = {}) {
     let commandLine = 'swiftenv install -s';
 
     if (core.isDebug) {
@@ -14,3 +14,5 @@ export async function install(options = {}) {
 
     await exec.exec(commandLine)
 }
+
+export default {install}
