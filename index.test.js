@@ -1,21 +1,13 @@
 const process = require('process');
-const cp = require('child_process');
+const exec = util.promisify(require('child_process').exec);
 const path = require('path');
 
 // shows how the runner will run a javascript action with env / stdout protocol
-test('test runs', () => {
-  return new Promise((resolve, reject) => {
-    process.env['INPUT_SWIFT-VERSION'] = '5.3.3';
-    const ip = path.join(__dirname, 'index.mjs');
-    cp.exec(`node ${ip}`, {env: process.env}, (error, stdout, stderr) => {
-      if (error) {
-        console.error(error);
-        reject(error);
-        return;
-      }
-      console.log(stdout.toString());
-      console.error(stderr.toString());
-      resolve();
-    });
-  })
-})
+test('test runs', async () => {
+  process.env['INPUT_SWIFT-VERSION'] = '5.3.3';
+  const ip = path.join(__dirname, 'index.mjs');
+
+  const { stdout, stderr } = await exec(`node ${ip}`, {env: process.env});
+  console.log(stdout);
+  console.error(stderr);
+});
