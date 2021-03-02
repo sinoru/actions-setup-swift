@@ -65,12 +65,20 @@ async function installSwiftenv() {
   core.endGroup();
 }
 
+async function installSwift(options = {}) {
+  core.startGroup('Install swift');
+
+  await install(options);
+
+  core.endGroup();
+}
+
 async function setupSwift() {
   const swiftVersion = core.getInput('swift-version', { required: false });
 
   await installEssentials();
   await installSwiftenv();
-  await install({'swiftVersion': swiftVersion, 'debug': core.isDebug()});
+  await installSwift({'swiftVersion': swiftVersion, 'debug': core.isDebug()});
 }
 
 // most @actions toolkit packages have async methods
