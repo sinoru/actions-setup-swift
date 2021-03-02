@@ -60,8 +60,8 @@ async function installSwiftenv() {
   await exec.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ~/.swiftenv');
 
   core.exportVariable('SWIFTENV_ROOT', '$HOME/.swiftenv');
-  core.addPath('$HOME/.swiftenv/bin');
-  core.addPath('$HOME/.swiftenv/shims');
+  core.addPath('~/.swiftenv/bin');
+  core.addPath('~/.swiftenv/shims');
 
   core.endGroup();
 }
