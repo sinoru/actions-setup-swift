@@ -1,6 +1,6 @@
 const process = require('process');
 const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+const execFile = util.promisify(require('child_process').execFile);
 const path = require('path');
 
 // shows how the runner will run a javascript action with env / stdout protocol
@@ -14,7 +14,7 @@ test('test runs', async () => {
 
     console.dir(env);
 
-    const { stdout, stderr } = await exec(`node ${ip}`, {env: env});
+    const { stdout, stderr } = await execFile('node', [ip], {env});
     console.log(stdout);
     console.error(stderr);
   } catch (error) {
