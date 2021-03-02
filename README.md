@@ -16,7 +16,7 @@ Basic:
 ```yaml
 steps:
 - uses: actions/checkout@v2
-- uses: sinoru/actions-setup-swift@v1
+- uses: sinoru/actions-setup-swift@v2
   with:
     swift-version: '5.3.3' # Exact version of a Swift version to use
 - run: swift build -v
