@@ -1,6 +1,6 @@
 {
   "name": "actions-setup-swift",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Set up a specific version of swift using swiftenv",
   "main": "index.mjs",
   "scripts": {
