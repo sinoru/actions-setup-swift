@@ -11,4 +11,4 @@ test('test runs', async () => {
   const { stdout, stderr } = await exec(`node ${ip}`, {env: process.env});
   console.log(stdout);
   console.error(stderr);
-});
+}, 100000);
