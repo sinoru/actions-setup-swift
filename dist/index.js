@@ -1,52 +1,76 @@
 require('./sourcemap-register.js');module.exports =
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 932:
+/***/ 518:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
 
-"use strict";
+// ESM COMPAT FLAG
 __nccwpck_require__.r(__webpack_exports__);
-/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "run": () => /* binding */ run
-/* harmony export */ });
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(186);
-/* harmony import */ var _actions_exec__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(514);
-/* harmony import */ var _swiftenv__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(126);
+
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  "run": () => /* binding */ run
+});
+
+// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
+var core = __nccwpck_require__(186);
+// EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
+var exec = __nccwpck_require__(514);
+// CONCATENATED MODULE: ./swiftenv.js
+
+
+
+async function install(options = {}) {
+    let commandLine = 'swiftenv install -s';
+
+    if (core.isDebug) {
+        commandLine += ' --verbose';
+    }
+
+    if (options['swiftVersion']) {
+        commandLine += ` ${options['swiftVersion']}`
+    }
+
+    await exec.exec(commandLine)
+}
+
+// CONCATENATED MODULE: ./index.js
 
 
 
 
 
 async function installEssentials() {
-  _actions_core__WEBPACK_IMPORTED_MODULE_0__.startGroup('Install Essentials')
+  core.startGroup('Install Essentials')
 
   switch (process.platform) {
     case 'linux':
-      await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec('sudo apt-get install build-essential binutils gnupg2 libedit2 libpython2.7 libsqlite3-0 libxml2 libz3-dev tzdata zlib1g-dev');
+      await exec.exec('sudo apt-get install build-essential binutils gnupg2 libedit2 libpython2.7 libsqlite3-0 libxml2 libz3-dev tzdata zlib1g-dev');
       break;
   }
 
-  _actions_core__WEBPACK_IMPORTED_MODULE_0__.endGroup()
+  core.endGroup()
 }
 
 async function installSwiftenv() {
-  _actions_core__WEBPACK_IMPORTED_MODULE_0__.startGroup('Install swiftlint')
+  core.startGroup('Install swiftlint')
 
-  await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ~/.swiftenv')
+  await exec.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ~/.swiftenv')
 
-  _actions_core__WEBPACK_IMPORTED_MODULE_0__.exportVariable('SWIFTENV_ROOT', '~/.swiftenv');
-  _actions_core__WEBPACK_IMPORTED_MODULE_0__.addPath('~/.swiftenv/shims')
+  core.exportVariable('SWIFTENV_ROOT', '~/.swiftenv');
+  core.addPath('~/.swiftenv/shims')
 
-  _actions_core__WEBPACK_IMPORTED_MODULE_0__.endGroup()
+  core.endGroup()
 }
 
 async function setupSwift() {
-  const swiftVersion = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('swift-version', { required: false });
+  const swiftVersion = core.getInput('swift-version', { required: false });
 
   await installEssentials();
   await installSwiftenv();
-  await _swiftenv__WEBPACK_IMPORTED_MODULE_2__.install({'swiftVersion': swiftVersion});
+  await install({'swiftVersion': swiftVersion});
 }
 
 // most @actions toolkit packages have async methods
@@ -54,7 +78,7 @@ async function run() {
   try {
     await setupSwift()
   } catch (error) {
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message)
+    core.setFailed(error.message)
   }
 }
 
@@ -66,7 +90,6 @@ if (__filename.endsWith('index.js')) { run() }
 /***/ 351:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
@@ -152,7 +175,6 @@ function escapeProperty(s) {
 /***/ 186:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -397,7 +419,6 @@ exports.getState = getState;
 /***/ 717:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 // For internal use, subject to change.
 var __importStar = (this && this.__importStar) || function (mod) {
@@ -433,7 +454,6 @@ exports.issueCommand = issueCommand;
 /***/ 278:
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -459,7 +479,6 @@ exports.toCommandValue = toCommandValue;
 /***/ 514:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -510,7 +529,6 @@ exports.exec = exec;
 /***/ 159:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1117,7 +1135,6 @@ class ExecState extends events.EventEmitter {
 /***/ 962:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1319,7 +1336,6 @@ function isUnixExecutable(stats) {
 /***/ 436:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
-"use strict";
 
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -1613,18 +1629,9 @@ function copyFile(srcFile, destFile, force) {
 
 /***/ }),
 
-/***/ 126:
-/***/ ((module) => {
-
-module.exports = eval("require")("./swiftenv");
-
-
-/***/ }),
-
 /***/ 357:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("assert");;
 
 /***/ }),
@@ -1632,7 +1639,6 @@ module.exports = require("assert");;
 /***/ 129:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("child_process");;
 
 /***/ }),
@@ -1640,7 +1646,6 @@ module.exports = require("child_process");;
 /***/ 614:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("events");;
 
 /***/ }),
@@ -1648,7 +1653,6 @@ module.exports = require("events");;
 /***/ 747:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("fs");;
 
 /***/ }),
@@ -1656,7 +1660,6 @@ module.exports = require("fs");;
 /***/ 87:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("os");;
 
 /***/ }),
@@ -1664,7 +1667,6 @@ module.exports = require("os");;
 /***/ 622:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("path");;
 
 /***/ }),
@@ -1672,7 +1674,6 @@ module.exports = require("path");;
 /***/ 669:
 /***/ ((module) => {
 
-"use strict";
 module.exports = require("util");;
 
 /***/ })
@@ -1743,7 +1744,7 @@ module.exports = require("util");;
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __nccwpck_require__(932);
+/******/ 	return __nccwpck_require__(518);
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map
