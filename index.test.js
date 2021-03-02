@@ -7,11 +7,14 @@ const path = require('path');
 test('test runs', async () => {
   try {
     const ip = path.join(__dirname, 'index.mjs');
-
-    const { stdout, stderr } = await exec(`node ${ip}`, {env: {
+    const env = {
       ...process.env,
       'INPUT_SWIFT-VERSION': '5.3.3'
-    }});
+    };
+
+    console.dir(env);
+
+    const { stdout, stderr } = await exec(`node ${ip}`, {env: env});
     console.log(stdout);
     console.error(stderr);
   } catch (error) {
