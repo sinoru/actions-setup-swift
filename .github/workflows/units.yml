@@ -5,15 +5,11 @@ on:
       - '.github/workflows/units.yml'
       - '**/*.js'
       - '**/*.mjs'
-    paths-ignore:
-      - 'dist/**'
   pull_request:
     paths:
       - '.github/workflows/units.yml'
       - '**/*.js'
       - '**/*.mjs'
-    paths-ignore:
-      - 'dist/**'
 
 jobs:
   # unit tests
