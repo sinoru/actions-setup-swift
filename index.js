@@ -4,7 +4,7 @@ import exec from '@actions/exec';
 import * as swiftenv from './swiftenv.js';
 
 async function installEssentials() {
-  core.startGroup('Install Essentials')
+  core.startGroup('Install Essentials');
 
   switch (process.platform) {
     case 'linux':
@@ -12,18 +12,19 @@ async function installEssentials() {
       break;
   }
 
-  core.endGroup()
+  core.endGroup();
 }
 
 async function installSwiftenv() {
-  core.startGroup('Install swiftlint')
+  core.startGroup('Install swiftlint');
 
-  await exec.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ~/.swiftenv')
+  await exec.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ~/.swiftenv');
 
-  core.exportVariable('SWIFTENV_ROOT', '~/.swiftenv');
-  core.addPath('~/.swiftenv/shims')
+  core.exportVariable('SWIFTENV_ROOT', '$HOME/.swiftenv');
+  core.addPath('$HOME/.swiftenv/bin');
+  core.addPath('$HOME/.swiftenv/shims');
 
-  core.endGroup()
+  core.endGroup();
 }
 
 async function setupSwift() {
@@ -37,10 +38,10 @@ async function setupSwift() {
 // most @actions toolkit packages have async methods
 export async function run() {
   try {
-    await setupSwift()
+    await setupSwift();
   } catch (error) {
-    core.setFailed(error.message)
+    core.setFailed(error.message);
   }
 }
 
-if (__filename.endsWith('index.js')) { run() }
+run();
