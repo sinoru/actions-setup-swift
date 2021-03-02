@@ -1,10 +1,9 @@
-import core from '@actions/core';
 import exec from '@actions/exec';
 
 export async function install(options = {}) {
     let commandLine = 'swiftenv install -s';
 
-    if (core.isDebug) {
+    if (options['debug']) {
         commandLine += ' --verbose';
     }
 

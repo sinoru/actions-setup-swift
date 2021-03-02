@@ -21,11 +21,10 @@ var exec = __nccwpck_require__(514);
 // CONCATENATED MODULE: ./swiftenv.mjs
 
 
-
 async function install(options = {}) {
     let commandLine = 'swiftenv install -s';
 
-    if (core.isDebug) {
+    if (options['debug']) {
         commandLine += ' --verbose';
     }
 
@@ -71,7 +70,7 @@ async function setupSwift() {
 
   await installEssentials();
   await installSwiftenv();
-  await install({'swiftVersion': swiftVersion});
+  await install({'swiftVersion': swiftVersion, 'debug': core.isDebug()});
 }
 
 // most @actions toolkit packages have async methods
