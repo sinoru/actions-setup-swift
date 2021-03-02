@@ -1,21 +1,47 @@
-const core = require('@actions/core');
-const wait = require('./wait');
+import * as core from '@actions/core';
+import * as exec from '@actions/exec';
 
+import * as swiftenv from './swiftenv';
+
+async function installEssentials() {
+  core.startGroup('Install Essentials')
+
+  switch (process.platform) {
+    case 'linux':
+      await exec.exec('sudo apt-get install build-essential binutils gnupg2 libedit2 libpython2.7 libsqlite3-0 libxml2 libz3-dev tzdata zlib1g-dev');
+      break;
+  }
+
+  core.endGroup()
+}
+
+async function installSwiftenv() {
+  core.startGroup('Install swiftlint')
+
+  await exec.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ~/.swiftenv')
+
+  core.exportVariable('SWIFTENV_ROOT', '~/.swiftenv');
+  core.addPath('~/.swiftenv/bin')
+  core.addPath('~/.swiftenv/shims')
+
+  core.endGroup()
+}
+
+async function setupSwift() {
+  const swiftVersion = core.getInput('swift-version', { required: false });
+
+  await installEssentials();
+  await installSwiftenv();
+  await swiftenv.install({swiftVersion: swiftVersion});
+}
 
 // most @actions toolkit packages have async methods
-async function run() {
+export async function run() {
   try {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
-
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
-
-    core.setOutput('time', new Date().toTimeString());
+    await setupSwift()
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error.message)
   }
 }
 
-run();
+if (__filename.endsWith('index.js')) { run() }
