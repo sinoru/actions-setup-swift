@@ -14,7 +14,7 @@ test('test runs', async () => {
 
     console.dir(env);
 
-    const { stdout, stderr } = await exec(`node ${ip}`, {env: env});
+    const { stdout, stderr } = await exec(`echo $INPUT_SWIFT-VERSION`, {env: env});
     console.log(stdout);
     console.error(stderr);
   } catch (error) {
