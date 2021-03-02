@@ -2,9 +2,10 @@
 
 [![Test](https://github.com/sinoru/actions-setup-swift/actions/workflows/test.yml/badge.svg)](https://github.com/sinoru/actions-setup-swift/actions/workflows/test.yml)
 
-This action sets up a swift environment for use in actions by:
+This action sets up a swift environment using [swiftenv](https://github.com/kylef/swiftenv) for use in actions by:
 
 - optionally downloading a version of swift from swift.org.
+- supports macOS, Linux runner.
 
 # Usage
 
