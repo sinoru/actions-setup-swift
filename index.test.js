@@ -9,7 +9,7 @@ test('test runs', async () => {
     const ip = path.join(__dirname, 'index.mjs');
     const env = {
       ...process.env,
-      'INPUT_SWIFT-VERSION': '5.3.3'
+      '\'INPUT_SWIFT-VERSION\'': '5.3.3'
     };
 
     console.dir(env);

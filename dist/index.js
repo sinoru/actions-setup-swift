@@ -76,7 +76,6 @@ async function setupSwift() {
 // most @actions toolkit packages have async methods
 async function run() {
   try {
-    console.dir(process.env);
     await setupSwift();
   } catch (error) {
     core.setFailed(error.message);
