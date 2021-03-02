@@ -5,7 +5,7 @@ const path = require('path');
 
 // shows how the runner will run a javascript action with env / stdout protocol
 test('test runs', async () => {
-  process.env['INPUT_swift-version'] = '5.3.3';
+  process.env['INPUT_SWIFT-VERSION'] = '5.3.3';
   try {
     const ip = path.join(__dirname, 'index.mjs');
 
