@@ -1,6 +1,6 @@
 {
   "name": "actions-setup-swift",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Setup a Swift environment and optionally downloading and adding it to the PATH",
   "main": "index.mjs",
   "scripts": {
