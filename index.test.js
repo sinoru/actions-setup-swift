@@ -12,8 +12,6 @@ test('test runs', async () => {
       'INPUT_SWIFT-VERSION': '5.3.3'
     };
 
-    console.dir(env);
-
     const { stdout, stderr } = await execFile('node', [ip], {env});
     console.log(stdout);
     console.error(stderr);
@@ -21,4 +19,4 @@ test('test runs', async () => {
     console.error(error);
     throw error;
   }
-}, 100000);
+}, 1000000);
