@@ -32,7 +32,7 @@ async function setupSwift() {
 
   await installEssentials();
   await installSwiftenv();
-  await swiftenv.install({swiftVersion: swiftVersion});
+  await swiftenv.install({'swiftVersion': swiftVersion});
 }
 
 // most @actions toolkit packages have async methods

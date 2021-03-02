@@ -8,8 +8,8 @@ export async function install(options = {}) {
         commandLine += ' --verbose';
     }
 
-    if (options[swiftVersion]) {
-        commandLine += ` ${options[swiftVersion]}`
+    if (options['swiftVersion']) {
+        commandLine += ` ${options['swiftVersion']}`
     }
 
     await exec.exec(commandLine)

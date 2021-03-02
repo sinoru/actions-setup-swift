@@ -29,8 +29,8 @@ async function install(options = {}) {
         commandLine += ' --verbose';
     }
 
-    if (options[swiftVersion]) {
-        commandLine += ` ${options[swiftVersion]}`
+    if (options['swiftVersion']) {
+        commandLine += ` ${options['swiftVersion']}`
     }
 
     await exec.exec(commandLine)
@@ -71,7 +71,7 @@ async function setupSwift() {
 
   await installEssentials();
   await installSwiftenv();
-  await install({swiftVersion: swiftVersion});
+  await install({'swiftVersion': swiftVersion});
 }
 
 // most @actions toolkit packages have async methods
