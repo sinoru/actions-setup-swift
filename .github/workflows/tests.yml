@@ -1,20 +1,17 @@
 name: "Tests"
 on:
-  pull_request:
   push:
-    branches:
-      - main
-      - 'releases/*'
+    paths:
+      - '.github/workflows/tests.yml'
+      - 'action.yml'
+      - 'dist/**'
+  pull_request:
+    paths:
+      - '.github/workflows/tests.yml'
+      - 'action.yml'
+      - 'dist/**'
 
 jobs:
-  # unit tests
-  units:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - run: npm ci
-    - run: npm test
-
   # test action works running from the graph
   test:
     runs-on: ${{ matrix.operating-system }}

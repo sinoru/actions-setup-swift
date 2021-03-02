@@ -1,0 +1,25 @@
+name: "Unit Tests"
+on:
+  push:
+    paths:
+      - '.github/workflows/units.yml'
+      - '**/*.js'
+      - '**/*.mjs'
+    paths-ignore:
+      - 'dist/**'
+  pull_request:
+    paths:
+      - '.github/workflows/units.yml'
+      - '**/*.js'
+      - '**/*.mjs'
+    paths-ignore:
+      - 'dist/**'
+
+jobs:
+  # unit tests
+  units:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: npm ci
+    - run: npm test
