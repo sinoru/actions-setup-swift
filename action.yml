@@ -26,7 +26,6 @@ runs:
         echo "::group::Install swiftlint"
         
         export SWIFTENV_ROOT="${{ github.action_path }}/swiftenv"
-        export PATH="$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims:$PATH"
 
         git clone --depth 1 https://github.com/kylef/swiftenv.git $SWIFTENV_ROOT
 
