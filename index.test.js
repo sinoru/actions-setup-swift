@@ -6,10 +6,12 @@ const path = require('path');
 // shows how the runner will run a javascript action with env / stdout protocol
 test('test runs', async () => {
   try {
-    process.env['INPUT_SWIFT-VERSION'] = '5.3.3';
     const ip = path.join(__dirname, 'index.mjs');
 
-    const { stdout, stderr } = await exec(`node ${ip}`, {env: process.env});
+    const { stdout, stderr } = await exec(`node ${ip}`, {env: {
+      ...process.env,
+      'INPUT_SWIFT-VERSION': '5.3.3'
+    }});
     console.log(stdout);
     console.error(stderr);
   } catch (error) {
