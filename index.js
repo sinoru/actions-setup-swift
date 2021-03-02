@@ -1,7 +1,7 @@
-import * as core from '@actions/core';
-import * as exec from '@actions/exec';
+import core from '@actions/core';
+import exec from '@actions/exec';
 
-import * as swiftenv from './swiftenv';
+import swiftenv from './swiftenv';
 
 async function installEssentials() {
   core.startGroup('Install Essentials')
@@ -21,7 +21,6 @@ async function installSwiftenv() {
   await exec.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ~/.swiftenv')
 
   core.exportVariable('SWIFTENV_ROOT', '~/.swiftenv');
-  core.addPath('~/.swiftenv/bin')
   core.addPath('~/.swiftenv/shims')
 
   core.endGroup()
