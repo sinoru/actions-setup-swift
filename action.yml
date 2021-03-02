@@ -1,43 +1,13 @@
-name: 'Setup Swift (swiftenv)'
-description: 'Set up a specific version of swift using swiftenv'
-branding:
-  icon: 'feather'
-  color: 'orange'
+name: 'Wait'
+description: 'Wait a designated number of milliseconds'
 inputs:
-  swift-version:
-    description: 'Exact version of a Swift version to use.'
+  milliseconds:  # id of input
+    description: 'number of milliseconds to wait'
     required: true
+    default: '1000'
+outputs:
+  time: # output will be available to future steps
+    description: 'The message to output'
 runs:
-  using: 'composite'
-  steps:
-    - name: Install Essentials
-      shell: bash
-      run: |
-        echo "::group::Install Essentials"
-        
-        case "${{ runner.os }}" in
-          "Linux") sudo apt-get install build-essential binutils gnupg2 libedit2 libpython2.7 libsqlite3-0 libxml2 libz3-dev tzdata zlib1g-dev;;
-        esac
-
-        echo "::endgroup::"
-    - name: Install swiftlint
-      shell: bash
-      run: |
-        echo "::group::Install swiftlint"
-        
-        export SWIFTENV_ROOT="${{ github.action_path }}/swiftenv"
-
-        git clone --depth 1 https://github.com/kylef/swiftenv.git $SWIFTENV_ROOT
-
-        echo "SWIFTENV_ROOT=$SWIFTENV_ROOT" >> $GITHUB_ENV
-        echo "$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims" >> $GITHUB_PATH
-
-        echo "::endgroup::"
-    - name: Install swift
-      shell: bash
-      run: |
-        echo "::group::Install swift"
-        
-        swiftenv install -s ${{ inputs.swift-version }}
-
-        echo "::endgroup::"
+  using: 'node12'
+  main: 'dist/index.js'

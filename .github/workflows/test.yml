@@ -1,33 +1,25 @@
-name: Test
+name: "units-test"
 on:
-  push:
-    paths-ignore:
-      - '**.md'
-      - 'LICENSE'
   pull_request:
-    paths-ignore:
-      - '**.md'
-      - 'LICENSE'
+  push:
+    branches:
+      - main
+      - 'releases/*'
 
 jobs:
-  test:
-    name: Test
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: ["ubuntu-16.04", "ubuntu-18.04", "ubuntu-20.04", "macos-10.15"]
-        swift-version: ["5.0.3", "5.1.5", "5.2.5", "5.3.3"]
-        exclude:
-          - operating-system: "ubuntu-20.04"
-            swift-version: "5.0.3"
-          - operating-system: "ubuntu-20.04"
-            swift-version: "5.1.5"
+  # unit tests
+  units:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: actions-setup-swift
-        uses: ./
-        with:
-          swift-version: ${{ matrix.swift-version }}
-      - name: Swift Version
-        run: swift -v
+    - uses: actions/checkout@v2
+    - run: npm ci
+    - run: npm test
+
+  # test action works running from the graph
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./
+      with:
+        milliseconds: 1000
