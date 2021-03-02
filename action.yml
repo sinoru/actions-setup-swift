@@ -1,13 +1,12 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Setup Swift (swiftenv)'
+description: 'Set up a specific version of swift using swiftenv'
+branding:
+  icon: 'feather'
+  color: 'orange'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
-    required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  swift-version:
+    description: 'Exact version of a Swift version to use.'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
