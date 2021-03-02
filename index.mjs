@@ -1,7 +1,7 @@
 import core from '@actions/core';
 import exec from '@actions/exec';
 
-import * as swiftenv from './swiftenv.js';
+import * as swiftenv from './swiftenv.mjs';
 
 async function installEssentials() {
   core.startGroup('Install Essentials');

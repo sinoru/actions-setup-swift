@@ -3,7 +3,7 @@ require('./sourcemap-register.js');module.exports =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 518:
+/***/ 299:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
 
 // ESM COMPAT FLAG
@@ -18,7 +18,7 @@ __nccwpck_require__.d(__webpack_exports__, {
 var core = __nccwpck_require__(186);
 // EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
 var exec = __nccwpck_require__(514);
-// CONCATENATED MODULE: ./swiftenv.js
+// CONCATENATED MODULE: ./swiftenv.mjs
 
 
 
@@ -36,7 +36,7 @@ async function install(options = {}) {
     await exec.exec(commandLine)
 }
 
-// CONCATENATED MODULE: ./index.js
+// CONCATENATED MODULE: ./index.mjs
 
 
 
@@ -1744,7 +1744,7 @@ module.exports = require("util");;
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __nccwpck_require__(518);
+/******/ 	return __nccwpck_require__(299);
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map
