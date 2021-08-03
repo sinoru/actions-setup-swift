@@ -38,6 +38,10 @@ async function installSwift(options = {}) {
 async function setupSwift() {
   const swiftVersion = core.getInput('swift-version', { required: false });
 
+  if (swiftVersion) {
+    core.exportVariable('SWIFT_VERSION', swiftVersion)
+  }
+
   await installEssentials();
   await installSwiftenv();
   await installSwift({'swiftVersion': swiftVersion, 'debug': core.isDebug()});
