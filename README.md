@@ -17,7 +17,7 @@ steps:
 - uses: actions/checkout@v2
 - uses: sinoru/actions-setup-swift@v2
   with:
-    swift-version: '5.3.3' # Exact version of a Swift version to use
+    swift-version: '5.4.2' # Exact version of a Swift version to use
 - run: swift build -v
 - run: swift test -v
 ```
