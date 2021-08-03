@@ -13,3 +13,13 @@ export async function install(options = {}) {
 
     await exec.exec(commandLine)
 }
+
+export async function rehash(options = {}) {
+    let commandLine = 'swiftenv rehash';
+
+    if (options['debug']) {
+        commandLine += ' --verbose';
+    }
+
+    await exec.exec(commandLine)
+}

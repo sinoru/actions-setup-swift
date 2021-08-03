@@ -35,6 +35,16 @@ async function install(options = {}) {
     await exec.exec(commandLine)
 }
 
+async function rehash(options = {}) {
+    let commandLine = 'swiftenv rehash';
+
+    if (options['debug']) {
+        commandLine += ' --verbose';
+    }
+
+    await exec.exec(commandLine)
+}
+
 // CONCATENATED MODULE: ./index.mjs
 
 
@@ -71,6 +81,7 @@ async function installSwift(options = {}) {
   core.startGroup('Install swift');
 
   await install(options);
+  await rehash(options);
 
   core.endGroup();
 }

@@ -33,6 +33,7 @@ async function installSwift(options = {}) {
   core.startGroup('Install swift');
 
   await swiftenv.install(options);
+  await swiftenv.rehash(options);
 
   core.endGroup();
 }
