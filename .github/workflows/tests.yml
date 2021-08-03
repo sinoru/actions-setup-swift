@@ -31,4 +31,5 @@ jobs:
           swift-version: ${{ matrix.swift-version }}
       - run: echo $PATH
       - run: which swift
+      - run: swiftenv which swift
       - run: swift -version
