@@ -29,4 +29,6 @@ jobs:
       - uses: ./
         with:
           swift-version: ${{ matrix.swift-version }}
+      - run: echo $PATH
+      - run: which swift
       - run: swift -version
