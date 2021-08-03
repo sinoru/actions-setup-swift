@@ -17,8 +17,8 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: ["ubuntu-16.04", "ubuntu-18.04", "ubuntu-20.04", "macos-10.15"]
-        swift-version: ["5.0.3", "5.1.5", "5.2.5", "5.3.3"]
+        operating-system: ["ubuntu-18.04", "ubuntu-20.04", "macos-10.15"]
+        swift-version: ["5.0.3", "5.1.5", "5.2.5", "5.3.3", "5.4.2"]
         exclude:
           - operating-system: "ubuntu-20.04"
             swift-version: "5.0.3"
