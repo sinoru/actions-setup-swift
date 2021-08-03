@@ -18,11 +18,13 @@ async function installEssentials() {
 async function installSwiftenv() {
   core.startGroup('Install swiftlint');
 
-  await exec.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ~/.swiftenv');
+  const swiftenvRoot = process.env.HOME + '/.swiftenv'
 
-  core.exportVariable('SWIFTENV_ROOT', '~/.swiftenv');
-  core.addPath('~/.swiftenv/bin');
-  core.addPath('~/.swiftenv/shims');
+  await exec.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ' + swiftenvRoot);
+
+  core.exportVariable('SWIFTENV_ROOT', process.env.HOME + '/.swiftenv');
+  core.addPath(swiftenvRoot + '/bin');
+  core.addPath(swiftenvRoot + '/shims');
 
   core.endGroup();
 }
@@ -37,6 +39,10 @@ async function installSwift(options = {}) {
 
 async function setupSwift() {
   const swiftVersion = core.getInput('swift-version', { required: false });
+
+  if (swiftVersion) {
+    core.exportVariable('SWIFT_VERSION', swiftVersion)
+  }
 
   await installEssentials();
   await installSwiftenv();
