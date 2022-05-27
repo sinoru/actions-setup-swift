@@ -27,7 +27,7 @@ async function installEssentials() {
           await exec.exec('sudo apt-get update');
 
           switch (osRelease.get("VERSION_ID")) {
-            case '18.04':
+            case '"18.04"':
               await exec.exec('sudo apt-get install \
                 binutils \
                 git \
@@ -43,7 +43,7 @@ async function installEssentials() {
                 tzdata \
                 zlib1g-dev');
               break;
-            default:
+            case '"20.04"':
               await exec.exec('sudo apt-get install \
                 binutils \
                 git \
