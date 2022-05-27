@@ -56,6 +56,7 @@ async function installEssentials() {
 
   switch (process.platform) {
     case 'linux':
+      await exec.exec('sudo apt-get update');
       await exec.exec('sudo apt-get install build-essential binutils gnupg2 libedit2 libpython2.7 libsqlite3-0 libxml2 libz3-dev tzdata zlib1g-dev');
       break;
   }
