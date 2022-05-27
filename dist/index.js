@@ -69,7 +69,7 @@ async function installSwiftenv() {
 
   const swiftenvRoot = process.env.HOME + '/.swiftenv'
 
-  await exec.exec('git clone --depth 1 https://github.com/kylef/swiftenv.git ' + swiftenvRoot);
+  await exec.exec('git clone --depth 1 --no-tags --progress https://github.com/kylef/swiftenv.git ' + swiftenvRoot);
 
   core.exportVariable('SWIFTENV_ROOT', process.env.HOME + '/.swiftenv');
   core.addPath(swiftenvRoot + '/bin');
