@@ -65,7 +65,7 @@ async function installEssentials() {
 }
 
 async function installSwiftenv() {
-  core.startGroup('Install swiftlint');
+  core.startGroup('Install swiftenv');
 
   const swiftenvRoot = process.env.HOME + '/.swiftenv'
 
