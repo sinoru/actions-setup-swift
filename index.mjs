@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import fs from 'fs';
 import core from '@actions/core';
 import exec from '@actions/exec';
 
@@ -9,7 +9,7 @@ async function installEssentials() {
 
   switch (process.platform) {
     case 'linux':
-      const osReleaseString = await fs.readFile('/etc/os-release', 'utf8');
+      const osReleaseString = await fs.promises.readFile('/etc/os-release', 'utf8');
       const osRelease = osReleaseString.split('\n').reduce(
         (accumulator, currentValue) => {
           const words = currentValue.split('=');

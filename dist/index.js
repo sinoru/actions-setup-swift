@@ -2,7 +2,7 @@ require('./sourcemap-register.js');module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 665:
+/***/ 299:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
@@ -14,8 +14,8 @@ __nccwpck_require__.d(__webpack_exports__, {
   "run": () => /* binding */ run
 });
 
-// CONCATENATED MODULE: external "fs/promises"
-const promises_namespaceObject = require("fs/promises");;
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(747);
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(186);
 // EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
@@ -59,7 +59,7 @@ async function installEssentials() {
 
   switch (process.platform) {
     case 'linux':
-      const osReleaseString = await promises_namespaceObject.readFile('/etc/os-release', 'utf8');
+      const osReleaseString = await external_fs_.promises.readFile('/etc/os-release', 'utf8');
       const osRelease = osReleaseString.split('\n').reduce(
         (accumulator, currentValue) => {
           const words = currentValue.split('=');
@@ -3547,7 +3547,7 @@ module.exports = require("util");;
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __nccwpck_require__(665);
+/******/ 	return __nccwpck_require__(299);
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map
