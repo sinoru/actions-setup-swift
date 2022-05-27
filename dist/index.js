@@ -63,16 +63,16 @@ async function installEssentials() {
       const osRelease = osReleaseString.split('\n').reduce(
         (accumulator, currentValue) => {
           const words = currentValue.split('=');
-          accumulator[words[0].trim()] = words[1].trim();
+          accumulator.set(words[0].trim(), words[1].trim());
         }, 
-        {}
+        new Map()
       );
 
-      switch (osRelease["ID"]) {
+      switch (osRelease.get("ID")) {
         case 'ubuntu':
           await exec.exec('sudo apt-get update');
 
-          switch (osRelease["VERSION_ID"]) {
+          switch (osRelease.get("VERSION_ID")) {
             case '18.04':
               await exec.exec('sudo apt-get install \
                 binutils \
