@@ -65,6 +65,10 @@ async function installEssentials() {
       osReleaseString.split('\n').forEach(
         (value) => {
           const words = value.split('=');
+          if (words.length != 2) {
+            return;
+          }
+
           osRelease.set(words[0].trim(), words[1].trim());
         }
       );
