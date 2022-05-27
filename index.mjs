@@ -1,3 +1,4 @@
+import fs from 'fs/promises';
 import core from '@actions/core';
 import exec from '@actions/exec';
 
@@ -8,9 +9,58 @@ async function installEssentials() {
 
   switch (process.platform) {
     case 'linux':
-      await exec.exec('sudo apt-get update');
-      await exec.exec('sudo apt-get install build-essential binutils gnupg2 libedit2 libpython2.7 libsqlite3-0 libxml2 libz3-dev tzdata zlib1g-dev');
-      break;
+      const osReleaseString = await fs.readFile('/etc/os-release', 'utf8');
+      const osRelease = osReleaseString.split('\n').reduce(
+        (accumulator, currentValue) => {
+          const words = currentValue.split('=');
+          accumulator[words[0].trim()] = words[1].trim();
+        }, 
+        {}
+      );
+
+      switch (osRelease["ID"]) {
+        case 'ubuntu':
+          await exec.exec('sudo apt-get update');
+
+          switch (osRelease["VERSION_ID"]) {
+            case '18.04':
+              await exec.exec('sudo apt-get install \
+                binutils \
+                git \
+                libc6-dev \
+                libcurl4 \
+                libedit2 \
+                libgcc-5-dev \
+                libpython2.7 \
+                libsqlite3-0 \
+                libstdc++-5-dev \
+                libxml2 \
+                pkg-config \
+                tzdata \
+                zlib1g-dev');
+              break;
+            default:
+              await exec.exec('sudo apt-get install \
+                binutils \
+                git \
+                gnupg2 \
+                libc6-dev \
+                libcurl4 \
+                libedit2 \
+                libgcc-9-dev \
+                libpython2.7 \
+                libsqlite3-0 \
+                libstdc++-9-dev \
+                libxml2 \
+                libz3-dev \
+                pkg-config \
+                tzdata \
+                uuid-dev \
+                zlib1g-dev');
+              break;
+          }
+          break;
+      }
   }
 
   core.endGroup();
