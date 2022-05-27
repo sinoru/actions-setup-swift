@@ -11,7 +11,6 @@ async function installEssentials() {
     case 'linux':
       const osRelease = new Map();
       const osReleaseString = await fs.promises.readFile('/etc/os-release', 'utf8');
-      console.log(osReleaseString);
       osReleaseString.split('\n').forEach(
         (value) => {
           const words = value.split('=');
