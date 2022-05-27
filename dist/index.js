@@ -59,13 +59,13 @@ async function installEssentials() {
 
   switch (process.platform) {
     case 'linux':
+      const osRelease = new Map();
       const osReleaseString = await external_fs_.promises.readFile('/etc/os-release', 'utf8');
-      const osRelease = osReleaseString.split('\n').reduce(
-        (accumulator, currentValue) => {
-          const words = currentValue.split('=');
-          accumulator.set(words[0].trim(), words[1].trim());
-        }, 
-        new Map()
+      osReleaseString.split('\n').forEach(
+        (value) => {
+          const words = value.split('=');
+          osRelease.set(words[0].trim(), words[1].trim());
+        }
       );
 
       switch (osRelease.get("ID")) {
