@@ -16,7 +16,7 @@ jobs:
   units:
     strategy:
       matrix:
-        runs-on: ["ubuntu-latest", "macos-latest"]
+        runs-on: ["ubuntu-latest", "macos-latest", "windows-latest"]
     runs-on: ${{ matrix.runs-on }}
     steps:
     - uses: actions/checkout@master
