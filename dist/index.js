@@ -38,7 +38,7 @@ async function install(options = {}) {
         commandLine += ` ${options['swiftVersion']}`
     }
 
-    await exec.exec(commandLine)
+    await exec.exec('bash', ['-c', `"${commandLine}"`]);
 }
 
 async function rehash(options = {}) {
@@ -48,7 +48,7 @@ async function rehash(options = {}) {
         commandLine += ' --verbose';
     }
 
-    await exec.exec(commandLine)
+    await exec.exec('bash', ['-c', `"${commandLine}"`]);
 }
 
 // CONCATENATED MODULE: ./index.mjs
