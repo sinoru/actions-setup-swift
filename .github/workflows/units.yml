@@ -14,8 +14,11 @@ on:
 jobs:
   # unit tests
   units:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        runs-on: ["ubuntu-latest", "macos-latest"]
+    runs-on: ${{ matrix.runs-on }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
     - run: npm ci
     - run: npm test

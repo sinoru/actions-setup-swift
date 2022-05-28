@@ -14,12 +14,12 @@ See [action.yml](action.yml)
 Basic:
 ```yaml
 steps:
-- uses: actions/checkout@v2
+- uses: actions/checkout@v3
 - uses: sinoru/actions-setup-swift@v2
   with:
-    swift-version: '5.4.2' # Exact version of a Swift version to use
-- run: swift build -v
-- run: swift test -v
+    swift-version: '5.6.1' # Exact version of a Swift version to use
+- run: swift build
+- run: swift test
 ```
 
 # License
