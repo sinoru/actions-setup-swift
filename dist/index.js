@@ -16,6 +16,8 @@ __nccwpck_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: external "fs"
 var external_fs_ = __nccwpck_require__(747);
+// EXTERNAL MODULE: external "os"
+var external_os_ = __nccwpck_require__(87);
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(186);
 // EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
@@ -48,6 +50,7 @@ async function rehash(options = {}) {
 }
 
 // CONCATENATED MODULE: ./index.mjs
+
 
 
 
@@ -123,7 +126,7 @@ async function installEssentials() {
 async function installSwiftenv() {
   core.startGroup('Install swiftenv');
 
-  const swiftenvRoot = (process.env['GITHUB_ACTION_PATH'] || process.env.HOME) + '/.swiftenv'
+  const swiftenvRoot = (process.env['GITHUB_ACTION_PATH'] || external_os_.homedir()) + '/.swiftenv'
 
   await exec.exec('git clone --depth 1 --no-tags --progress https://github.com/kylef/swiftenv.git ' + swiftenvRoot);
 

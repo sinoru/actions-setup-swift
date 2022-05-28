@@ -1,4 +1,5 @@
 import fs from 'fs';
+import os from 'os';
 import core from '@actions/core';
 import exec from '@actions/exec';
 
@@ -73,7 +74,7 @@ async function installEssentials() {
 async function installSwiftenv() {
   core.startGroup('Install swiftenv');
 
-  const swiftenvRoot = (process.env['GITHUB_ACTION_PATH'] || process.env.HOME) + '/.swiftenv'
+  const swiftenvRoot = (process.env['GITHUB_ACTION_PATH'] || os.homedir()) + '/.swiftenv'
 
   await exec.exec('git clone --depth 1 --no-tags --progress https://github.com/kylef/swiftenv.git ' + swiftenvRoot);
 
