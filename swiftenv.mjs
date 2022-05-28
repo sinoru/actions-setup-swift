@@ -11,7 +11,7 @@ export async function install(options = {}) {
         commandLine += ` ${options['swiftVersion']}`
     }
 
-    await exec.exec('bash', ['-c', `"${commandLine}"`]);
+    await exec.exec('bash', ['-c', commandLine]);
 }
 
 export async function rehash(options = {}) {
@@ -21,5 +21,5 @@ export async function rehash(options = {}) {
         commandLine += ' --verbose';
     }
 
-    await exec.exec('bash', ['-c', `"${commandLine}"`]);
+    await exec.exec('bash', ['-c', commandLine]);
 }
