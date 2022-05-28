@@ -73,11 +73,11 @@ async function installEssentials() {
 async function installSwiftenv() {
   core.startGroup('Install swiftenv');
 
-  const swiftenvRoot = process.env.HOME + '/.swiftenv'
+  const swiftenvRoot = (process.env['GITHUB_ACTION_PATH'] || process.env.HOME) + '/.swiftenv'
 
   await exec.exec('git clone --depth 1 --no-tags --progress https://github.com/kylef/swiftenv.git ' + swiftenvRoot);
 
-  core.exportVariable('SWIFTENV_ROOT', process.env.HOME + '/.swiftenv');
+  core.exportVariable('SWIFTENV_ROOT', swiftenvRoot);
   core.addPath(swiftenvRoot + '/bin');
   core.addPath(swiftenvRoot + '/shims');
 
