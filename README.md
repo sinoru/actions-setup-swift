@@ -1,6 +1,5 @@
 # actions-setup-swift
 
-[![Unit Tests](https://github.com/sinoru/actions-setup-swift/actions/workflows/units.yml/badge.svg)](https://github.com/sinoru/actions-setup-swift/actions/workflows/test.yml)
 [![Tests](https://github.com/sinoru/actions-setup-swift/actions/workflows/tests.yml/badge.svg)](https://github.com/sinoru/actions-setup-swift/actions/workflows/test.yml)
 
 This action sets up a swift environment for use in actions by:
