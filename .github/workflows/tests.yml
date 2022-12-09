@@ -33,7 +33,7 @@ jobs:
           - operating-system: "macos-10.15"
             swift-version: "5.2.5"
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./
         with:
           swift-version: ${{ matrix.swift-version }}
