@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         operating-system: ["ubuntu-18.04", "ubuntu-20.04", "macos-10.15", "macos-11", "macos-12"]
-        swift-version: ["5.3.3", "5.4.3", "5.5.3", "5.6.1"]
+        swift-version: ["5.3.3", "5.4.3", "5.5.3", "5.6.3", "5.7.1"]
         include:
           - operating-system: "ubuntu-18.04"
             swift-version: "5.0.3"
@@ -32,8 +32,10 @@ jobs:
             swift-version: "5.1.5"
           - operating-system: "macos-10.15"
             swift-version: "5.2.5"
+          - operating-system: "ubuntu-22.04"
+            swift-version: "5.7.1"
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./
         with:
           swift-version: ${{ matrix.swift-version }}

@@ -8,5 +8,5 @@ inputs:
     description: 'Exact version of a Swift version to use.'
     required: false
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
